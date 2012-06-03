@@ -5,7 +5,6 @@
         watermark: function (opts) {
 
             var defaults = {
-                txt: 'Text Here',
                 cssclass: 'watermark'
             }
 
@@ -14,12 +13,13 @@
             return this.each(function () {
 
                 var elm = $(this);
+                var txt = elm.attr('title');
 
-                elm.addClass(opts.cssclass).val(opts.txt);
+                elm.addClass(opts.cssclass).val(txt);
 
                 elm.focus(function () {
 
-                    if (elm.val() == opts.txt) {
+                    if (elm.val() == txt) {
 
                         elm.removeClass(opts.cssclass).val('');
                     }
@@ -29,7 +29,7 @@
 
                     if (elm.val() == '') {
 
-                        elm.addClass(opts.cssclass).val(opts.txt);
+                        elm.addClass(opts.cssclass).val(txt);
                     }
                 });
             });
